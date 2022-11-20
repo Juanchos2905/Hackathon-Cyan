@@ -22,3 +22,16 @@ const ServiceSchema = Schema({
     require: true,
   },
 })
+
+ServiceSchema.methods.toJSON = function () {
+  const { __v, _id, status, ...service } = this.toObject()
+  service.id = _id
+
+  const { _id: _uId, password, __v: __uV, ...user } = service.user
+  user.id = _uId
+  service.user = user
+
+  return service
+}
+
+module.exports = model('Service', ServiceSchema)

@@ -10,4 +10,5 @@ module.exports = {
   Role,
   Invoice,
   User,
+  Service,
 }

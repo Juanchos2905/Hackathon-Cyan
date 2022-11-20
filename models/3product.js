@@ -19,18 +19,18 @@ const ProductSchema = Schema({
   },
   serviceId: {
     type: ObjectId,
+    ref: 'Service',
     required: true,
   },
 })
 
 ProductSchema.methods.toJSON = function () {
-  const { __v, _id, status, createdAt, modifiedAt, ...product } =
-    this.toObject()
+  const { __v, _id, status, ...product } = this.toObject()
   product.id = _id
 
-  const { _id: _uId, password, __v: __uV, ...user } = product.user
-  user.id = _uId
-  product.user = user
+  const { _id: _sId, __v: __sV, ...service } = product.service
+  service.id = _sId
+  product.service = service
 
   return product
 }
