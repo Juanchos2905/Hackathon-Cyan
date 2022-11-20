@@ -18,7 +18,6 @@ class Server {
       users: '/api/users',
       invoices: '/api/invoices',
       users: '/api/users',
-      services: '/api/services',
     }
 
     // Conectar a base datos
@@ -37,7 +36,7 @@ class Server {
 
   middlewares() {
     // CORS
-    this.app.use(cors())
+    this.app.use(cors({ origin: '*' }))
 
     // Lectura y parseo del body
     this.app.use(express.json())
@@ -64,7 +63,6 @@ class Server {
     this.app.use(this.paths.users, require('../routes/user.routes'))
     this.app.use(this.paths.invoices, require('../routes/invoice.routes'))
     this.app.use(this.paths.users, require('../routes/user.routes'))
-    this.app.use(this.paths.services, require('../routes/service.routes'))
   }
 
   listen() {

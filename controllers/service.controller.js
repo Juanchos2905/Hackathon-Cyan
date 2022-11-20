@@ -1,5 +1,4 @@
 const { request, response } = require('express')
-const { validateFields } = require('../middlewares')
 
 const { isObjectId } = require('../helpers/validate-object-id')
 const { Service, User, Product } = require('../models')
