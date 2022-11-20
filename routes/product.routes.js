@@ -11,10 +11,9 @@ router.get('/', getProducts)
 router.post(
   '/',
   [
-    validateJWT,
     check('name', 'El nombre del producto es obligatorio').not().isEmpty(),
     check('description', 'La descripción es requerida').not().isEmpty(),
-    check('price', 'El precio es requerido').isMongoId(),
+    check('price', 'El precio es requerido').not().isEmpty(),
     validateFields,
   ],
   createProduct

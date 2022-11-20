@@ -45,7 +45,7 @@ const createProduct = async (req = request, res = response) => {
     await product.save()
 
     res.status(201).json({
-      Product,
+      product,
     })
   } catch (error) {
     console.log(error)
