@@ -19,7 +19,6 @@ router.post(
     check('email', 'El email es obligatorio').not().isEmpty(),
     check('email', 'El email no es válido').isEmail(),
     check('email').custom(emailExists),
-    check('address').not().isEmpty(),
     check('password', 'El passsword es obligatorio').not().isEmpty(),
     check('password', 'El passsword debe ser de 6 letras o más').isLength({
       min: 6,

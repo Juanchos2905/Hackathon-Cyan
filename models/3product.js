@@ -17,8 +17,22 @@ const ProductSchema = Schema({
     type: Boolean,
     default: true,
   },
-  createdAt: {
-    type: Date,
+  serviceId: {
+    type: ObjectId,
     required: true,
   },
 })
+
+ProductSchema.methods.toJSON = function () {
+  const { __v, _id, status, createdAt, modifiedAt, ...product } =
+    this.toObject()
+  product.id = _id
+
+  const { _id: _uId, password, __v: __uV, ...user } = product.user
+  user.id = _uId
+  product.user = user
+
+  return product
+}
+
+module.exports = model('Product', ProductSchema)

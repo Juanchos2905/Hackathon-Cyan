@@ -29,7 +29,15 @@ const getUsers = async (req = request, res = response) => {
 
 const createUser = async (req = request, res = response) => {
   const { name, lastName, typeId, id, email, password, role } = req.body
-  const user = new User({ name, lastName, typeId, id, email, password, role })
+  const user = new User({
+    name,
+    lastName,
+    typeId,
+    id,
+    email,
+    password,
+    role,
+  })
 
   user.password = bcryptjs.hashSync(password, bcryptjs.genSaltSync())
   await user.save()

@@ -13,6 +13,7 @@ const UserSchema = Schema({
   typeId: {
     type: String,
     required: [true, 'El tipo de identificación es obligatorio'],
+    enum: ['C.C', 'T.I', 'T.E'],
   },
   id: {
     type: String,
@@ -32,7 +33,6 @@ const UserSchema = Schema({
   },
   address: {
     type: String,
-    required: [true, 'La dirección es obligatoria'],
   },
   role: {
     type: String,
@@ -43,16 +43,12 @@ const UserSchema = Schema({
     type: Boolean,
     default: true,
   },
-  createdAt: {
-    type: Date,
-    required: true,
-  },
 })
 
 UserSchema.methods.toJSON = function () {
-  const { __v, password, _id, google, ...user } = this.toObject()
+  const { __v, password, _id, google, status, ...user } = this.toObject()
   user.id = _id
   return user
 }
 
-module.exports = model('Uuser', UuserSchema)
+module.exports = model('User', UserSchema)
