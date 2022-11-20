@@ -4,7 +4,7 @@ const productController = require('./product.controller')
 const searchController = require('./search.controller')
 const uploadController = require('./upload.controller')
 const userController = require('./user.controller')
-const uuserController = require('./user.controller')
+const serviceController = require('./service.controller')
 
 module.exports = {
   ...authController,
@@ -13,4 +13,5 @@ module.exports = {
   ...searchController,
   ...uploadController,
   ...userController,
+  ...serviceController,
 }

@@ -21,6 +21,10 @@ const ServiceSchema = Schema({
     ref: 'User',
     require: true,
   },
+  status: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 ServiceSchema.methods.toJSON = function () {
